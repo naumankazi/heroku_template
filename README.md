@@ -1,1 +1,1 @@
-# predict_salary
+# heroku_template
