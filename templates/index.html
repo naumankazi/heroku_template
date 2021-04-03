@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	  <h1>Predict Salary Analysis</h1>
+
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}"method="post">
+        <table>
+          <tr>
+            <td>
+              10th percentage:
+            </td>
+            <td>
+    	        <input type="text" name="10perc" placeholder="10thPercentage" required="required" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              12th percentage:
+            </td>
+            <td>
+              <input type="text" name="12perc" placeholder="12thPercentage" required="required" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              College GPA:
+            </td>
+            <td>
+		          <input type="text" name="CollegeGPA" placeholder="College GPA" required="required" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            </td>
+          </tr>
+        
+        </table>
+      </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+
+  </div>
+
+
+</body>
+</html>
