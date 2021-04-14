@@ -26,7 +26,7 @@ def preprocess(lst=[]):
 
 @app.route('/')
 def home():
-    return render_template('form2.html')
+    return render_template('form.html')
 
 
 @app.route('/predict', methods=['POST'])
