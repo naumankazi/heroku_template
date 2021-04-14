@@ -1,1 +1,1 @@
-# heroku_template2
+# heroku_template
