@@ -271,7 +271,7 @@ body {
         <form name="predictForm" action="{{ url_for('predict')}}" onsubmit="return validateForm()" method="post"> 
           <div class="user-box">
             <input type="text" name="Gender" required="required">
-            <label>Gender (Male or Female)<span id="error-gender"></span></label>
+            <label>Gender <span style="font-size: 10px;">(Male or Female)</span><span id="error-gender"></span></label>
           </div>
           <div class="user-box">
             <input type="text" name="perc10" required="required">
