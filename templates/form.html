@@ -23,7 +23,7 @@ body {
 }
 
 .login-form {
-  top: 4%;
+  top: 9%;
   position: absolute;
   left: 5%;
   right: 5%;
@@ -205,23 +205,73 @@ body {
 
 </style>
 
+<script>
+  function validateForm() {
+    var gender, perc10, perc12, collegeTier, collegeGPA, degree;
+  
+    gender = document.forms["predictForm"]["Gender"].value;
+    perc10 = document.forms["predictForm"]["perc10"].value;
+    perc12 = document.forms["predictForm"]["perc12"].value;
+    collegeTier = document.forms["predictForm"]["CollegeTier"].value;
+    collegeGPA = document.forms["predictForm"]["CollegeGPA"].value;
+    degree = document.forms["predictForm"]["Degree"].value;
+    spec = document.forms["predictForm"]["Spec"].value;
+
+    if (gender.toUpperCase() != "MALE" && gender.toUpperCase() != "FEMALE") {
+      alert("Enter from specified gender only!");
+      return false;
+    }
+
+    if ( !(perc10 >= 0 && perc10 < 100) ) {
+      alert("Enter 10th percentage from specified range!");
+      return false;
+    }
+
+    if ( !(perc12 >= 0 && perc12 < 100) ) {
+      alert("Enter 12th Percentage from specified range!");
+      return false;
+    }
+
+    if (collegeTier != 1 && collegeTier != 2) {
+      alert("Enter from specified tier!");
+      return false;
+    }
+
+    if ( !(collegeGPA >= 0 && collegeGPA < 100) ) {
+      alert("Enter College GPA from specified range!");
+      return false;
+    }
+
+    if (degree.toUpperCase() != "BTECH" && degree.toUpperCase() != "MTECH" && degree.toUpperCase() != "MCA") {
+      alert("Enter from specified degree only!");
+      return false;
+    }
+
+    if (spec.toUpperCase() != "CSE" && spec.toUpperCase() != "ECE" && spec.toUpperCase() != "IT" && spec.toUpperCase() != "CA" && spec.toUpperCase() != "ME" && spec.toUpperCase() != "Others") {
+      alert("Enter from specified Specialization only!");
+      return false;
+    }
+
+  }
+</script>
+
 </head>
 
 <body>
 
     <div class="login-form">
         <h1>Predict Monthly Salary</h1>
-        <form action="{{ url_for('predict')}}"method="post"> 
+        <form name="predictForm" action="{{ url_for('predict')}}" onsubmit="return validateForm()" method="post"> 
           <div class="user-box">
             <input type="text" name="Gender" required="required">
             <label>Gender (Male or Female)</label>
           </div>
           <div class="user-box">
-            <input type="text" name="10perc" required="required">
+            <input type="text" name="perc10" required="required">
             <label>10th Percentage (0-100)</label>
           </div>
           <div class="user-box">
-            <input type="text" name="12perc" required="required">
+            <input type="text" name="perc12" required="required">
             <label>12th Percentage (0-100)</label>
           </div>
           <div class="user-box">
@@ -235,6 +285,10 @@ body {
           <div class="user-box">
             <input type="text" name="Degree" required="required">
             <label>Degree (Btech, Mtech or MCA)</label>
+          </div>
+          <div class="user-box">
+            <input type="text" name="Spec" required="required">
+            <label>Specialization (CSE, ECE, IT, CA, ME or Others)</label>
           </div>
           <div class="user-box">
           <a href="#">
