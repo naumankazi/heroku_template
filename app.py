@@ -3,11 +3,6 @@ from flask import Flask, request, render_template
 import pickle
 
 app = Flask(__name__)
-"""
-model = pickle.load(open('model.pkl', 'rb'))
-trf1 = pickle.load(open('trf1.pkl', 'rb'))
-trf2 = pickle.load(open('trf2.pkl', 'rb'))
-"""
 
 trf1 = pickle.load(open('trf1.pkl', 'rb'))
 
@@ -43,12 +38,10 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    """
-    For rendering results on HTML GUI
-    """
     int_features = [x for x in request.form.values()]
     int_features[0] = int_features[0].upper()
     int_features[5] = int_features[5].upper()
+    int_features[6] = int_features[6].upper()
     final_features = [np.array(int_features)]
     final_features = preprocess(final_features)
     prediction = model.predict(final_features)
