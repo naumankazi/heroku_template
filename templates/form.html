@@ -23,7 +23,7 @@ body {
 }
 
 .login-form {
-  top: 2%;
+  top: 9%;
   position: absolute;
   left: 5%;
   right: 5%;
@@ -218,37 +218,44 @@ body {
     spec = document.forms["predictForm"]["Spec"].value;
 
     if (gender.toUpperCase() != "MALE" && gender.toUpperCase() != "FEMALE") {
-      alert("Enter from specified gender only!");
+      document.getElementById('error-gender').innerHTML = " Enter from specified gender only!"
+      document.getElementById('error-gender').style.color = "Red";
       return false;
     }
 
     if ( !(perc10 >= 0 && perc10 < 100) ) {
-      alert("Enter 10th percentage from specified range!");
+      document.getElementById('error-perc10').innerHTML = " Enter 10th Percentage from specified range!"
+      document.getElementById('error-perc10').style.color = "Red";
       return false;
     }
 
     if ( !(perc12 >= 0 && perc12 < 100) ) {
-      alert("Enter 12th Percentage from specified range!");
+      document.getElementById('error-perc12').innerHTML = " Enter 12th Percentage from specified range!"
+      document.getElementById('error-perc12').style.color = "Red";
       return false;
     }
 
     if (collegeTier != 1 && collegeTier != 2) {
-      alert("Enter from specified tier!");
+      document.getElementById('error-tier').innerHTML = " Enter from specified tier!"
+      document.getElementById('error-tier').style.color = "Red";
       return false;
     }
 
     if ( !(collegeGPA >= 0 && collegeGPA < 100) ) {
-      alert("Enter College GPA from specified range!");
+      document.getElementById('error-gpa').innerHTML = " Enter College GPA from specified range!"
+      document.getElementById('error-gpa').style.color = "Red";
       return false;
     }
 
     if (degree.toUpperCase() != "BTECH" && degree.toUpperCase() != "MTECH" && degree.toUpperCase() != "MCA") {
-      alert("Enter from specified degree only!");
+      document.getElementById('error-degree').innerHTML = " Enter from specified degree only!"
+      document.getElementById('error-degree').style.color = "Red";
       return false;
     }
 
     if (spec.toUpperCase() != "CSE" && spec.toUpperCase() != "ECE" && spec.toUpperCase() != "IT" && spec.toUpperCase() != "CA" && spec.toUpperCase() != "ME" && spec.toUpperCase() != "OTHERS") {
-      alert("Enter from specified Specialization only!");
+      document.getElementById('error-spec').innerHTML = " Enter from specified Specialization only!"
+      document.getElementById('error-spec').style.color = "Red";
       return false;
     }
 
@@ -264,31 +271,31 @@ body {
         <form name="predictForm" action="{{ url_for('predict')}}" onsubmit="return validateForm()" method="post"> 
           <div class="user-box">
             <input type="text" name="Gender" required="required">
-            <label>Gender (Male or Female)</label>
+            <label>Gender (Male or Female)<span id="error-gender"></span></label>
           </div>
           <div class="user-box">
             <input type="text" name="perc10" required="required">
-            <label>10th Percentage (0-100)</label>
+            <label>10th Percentage (0-100)<span id="error-perc10"></span></label>
           </div>
           <div class="user-box">
             <input type="text" name="perc12" required="required">
-            <label>12th Percentage (0-100)</label>
+            <label>12th Percentage (0-100)<span id="error-perc12"></span></label>
           </div>
           <div class="user-box">
             <input type="text" name="CollegeTier" required="required">
-            <label>College Tier (1 or 2)</label>
+            <label>College Tier (1 or 2)<span id="error-tier"></span></label>
           </div>
           <div class="user-box">
             <input type="text" name="CollegeGPA" required="required">
-            <label>College GPA (0-100)</label>
+            <label>College GPA (0-100)<span id="error-gpa"></span></label>
           </div>
           <div class="user-box">
             <input type="text" name="Degree" required="required">
-            <label>Degree (Btech, Mtech or MCA)</label>
+            <label>Degree (Btech, Mtech or MCA)<span id="error-degree"></span></label>
           </div>
           <div class="user-box">
             <input type="text" name="Spec" required="required">
-            <label>Specialization <span style=" font-size: 10px; ">(CSE, ECE, IT, CA, ME or Others)</span></label>
+            <label>Specialization (CSE, ECE, IT, CA, ME or Others)<span id="error-spec"></span></label>
           </div>
           <div class="user-box">
           <a href="#">
