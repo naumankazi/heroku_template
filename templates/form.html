@@ -277,7 +277,7 @@ body {
       document.getElementById('error-degree').style.visibility="hidden";
     }
 
-    if (spec.toUpperCase() != "CSE" && spec.toUpperCase() != "ECE" && spec.toUpperCase() != "IT" && spec.toUpperCase() != "CA" && spec.toUpperCase() != "ME" && spec.toUpperCase() != "OTHERS") {
+    if (spec.toUpperCase() != "CSE" && spec.toUpperCase() != "ECE" && spec.toUpperCase() != "IT" && spec.toUpperCase() != "CA" && spec.toUpperCase() != "ME") {
       document.getElementById('error-spec').style.visibility="visible";
       document.getElementById('error-spec').innerHTML = " Wrong Specialization Input!"
       document.getElementById('error-spec').style.color = "Red";
@@ -327,7 +327,7 @@ body {
           </div>
           <div class="user-box">
             <input type="text" name="Spec" required="required">
-            <label>Specialization <span style="font-size: 10px;">(CSE, ECE, IT, CA, ME or Others)</span></label><span style="font-size: 14px;" id="error-spec"></span>
+            <label>Specialization <span style="font-size: 10px;">(CSE, ECE, IT, CA or ME)</span></label><span style="font-size: 14px;" id="error-spec"></span>
           </div>
           <div class="user-box">
           <a href="#">
