@@ -18,17 +18,14 @@ def preprocess(lst=[]):
     lst = trf1.transform(lst)
     lst = trf2.transform(lst)
     lst = trf3.transform(lst)
-    print(lst)
 
     lst_flt = []
     for itm in lst[0]:
         lst_flt.append(float(itm))
-    print(lst_flt)
 
     list_flt = [np.array(lst_flt)]
     list_flt = scaler.transform(list_flt)
     list_flt = np.append(arr=np.ones((np.shape(list_flt)[0], 1), dtype=int), values=list_flt, axis=1)
-    print(list_flt)
     return list_flt
 
 @app.route('/')
