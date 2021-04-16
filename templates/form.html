@@ -207,7 +207,7 @@ body {
 
 <script>
   function validateForm() {
-    var gender, perc10, perc12, collegeTier, collegeGPA, degree;
+    var gender, perc10, perc12, collegeTier, collegeGPA, degree, count = 0;
   
     gender = document.forms["predictForm"]["Gender"].value;
     perc10 = document.forms["predictForm"]["perc10"].value;
@@ -218,44 +218,76 @@ body {
     spec = document.forms["predictForm"]["Spec"].value;
 
     if (gender.toUpperCase() != "MALE" && gender.toUpperCase() != "FEMALE") {
-      document.getElementById('error-gender').innerHTML = " Wrong Input!"
+      document.getElementById('error-gender').style.visibility="visible";
+      document.getElementById('error-gender').innerHTML = " Enter from specified gender only!"
       document.getElementById('error-gender').style.color = "Red";
-      return false;
+      count += 1;
+    }
+    else{
+      document.getElementById('error-gender').style.visibility="hidden";
     }
 
     if ( !(perc10 >= 0 && perc10 < 100) ) {
-      document.getElementById('error-perc10').innerHTML = " Wrong Input!"
+      document.getElementById('error-perc10').style.visibility="visible";
+      document.getElementById('error-perc10').innerHTML = " Enter 10th Percentage from specified range!"
       document.getElementById('error-perc10').style.color = "Red";
-      return false;
+      count += 1;
+    }
+    else{
+      document.getElementById('error-perc10').style.visibility="hidden";
     }
 
     if ( !(perc12 >= 0 && perc12 < 100) ) {
-      document.getElementById('error-perc12').innerHTML = " Wrong Input!"
+      document.getElementById('error-perc12').style.visibility="visible";
+      document.getElementById('error-perc12').innerHTML = " Enter 12th Percentage from specified range!"
       document.getElementById('error-perc12').style.color = "Red";
-      return false;
+      count += 1;
+    }
+    else{
+      document.getElementById('error-perc12').style.visibility="hidden";
     }
 
     if (collegeTier != 1 && collegeTier != 2) {
-      document.getElementById('error-tier').innerHTML = " Wrong Input!"
+      document.getElementById('error-tier').style.visibility="visible";
+      document.getElementById('error-tier').innerHTML = " Enter from specified tier!"
       document.getElementById('error-tier').style.color = "Red";
-      return false;
+      count += 1;
+    }
+    else{
+      document.getElementById('error-tier').style.visibility="hidden";
     }
 
     if ( !(collegeGPA >= 0 && collegeGPA < 100) ) {
-      document.getElementById('error-gpa').innerHTML = " Wrong Input!"
+      document.getElementById('error-gpa').style.visibility="visible";
+      document.getElementById('error-gpa').innerHTML = " Enter College GPA from specified range!"
       document.getElementById('error-gpa').style.color = "Red";
-      return false;
+      count += 1;
+    }
+    else{
+      document.getElementById('error-gpa').style.visibility="hidden";
     }
 
     if (degree.toUpperCase() != "BTECH" && degree.toUpperCase() != "MTECH" && degree.toUpperCase() != "MCA") {
-      document.getElementById('error-degree').innerHTML = " Wrong Input!"
+      document.getElementById('error-degree').style.visibility="visible";      
+      document.getElementById('error-degree').innerHTML = " Enter from specified degree only!"
       document.getElementById('error-degree').style.color = "Red";
-      return false;
+      count += 1;
+    }
+    else{
+      document.getElementById('error-degree').style.visibility="hidden";
     }
 
     if (spec.toUpperCase() != "CSE" && spec.toUpperCase() != "ECE" && spec.toUpperCase() != "IT" && spec.toUpperCase() != "CA" && spec.toUpperCase() != "ME" && spec.toUpperCase() != "OTHERS") {
-      document.getElementById('error-spec').innerHTML = " Wrong Specialization Input!"
+      document.getElementById('error-spec').style.visibility="visible";
+      document.getElementById('error-spec').innerHTML = " Enter from specified Specialization only!"
       document.getElementById('error-spec').style.color = "Red";
+      count += 1;
+    }
+    else{
+      document.getElementById('error-spec').style.visibility="hidden";
+    }
+
+    if (count > 0) {
       return false;
     }
 
